@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>获取一个数字各个位上的数字</title>
+</head>
+<body>
+</body>
+<script>
+
+function listNumber(a){
+	var maxDigit=a.toString().length;
+	var mode=10;
+	var dev=1;
+	for(var i=0;i<maxDigit;i++,mode*=10,dev*=10){
+		var bucket=parseInt((a%mode)/dev);
+		console.log(bucket);
+	}
+}
+
+	var a=378954;
+	console.log("获取一个数字各个位上的数字前的数: "+a);
+	listNumber(a);
+</script>
+</html>

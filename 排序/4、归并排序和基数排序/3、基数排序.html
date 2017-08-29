@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>基数排序</title>
+</head>
+<body>
+</body>
+<script>
+
+//有bug
+
+//空间复杂度：O(r)  r是进制数，也就是所谓的基数
+//时间复杂度：
+//需要进行d（最大位数）趟进行，一趟分配需要O(n),收集需要O(r)，所以时间复杂度O(d(n+r))
+//	
+//稳定
+	
+	function radixSort(arr,maxDigit){  //maxDigit最大位数
+		var counter=[];
+		var mode=10;
+		var dev=1;
+		for(var i=0;i<maxDigit;i++,mode*=10,dev*=10){
+			for(var j=0;j<arr.length;j++){
+				var bucket=parseInt((arr[j]%mode)/dev);
+				if(counter[bucket]==null){//counter=[];是一个数组中每个元素又是数组
+					counter[bucket]=[];
+				}
+				counter[bucket].push(arr[j]);
+			}
+
+			var pos=0;
+			for(var j=0;j<counter.length;j++){
+				var value=null;
+				if(counter[j]!=null){
+					while((value=counter[j].shift())!=null){
+						arr[pos++]=value;
+					}
+				}
+			}
+
+
+		}
+		return arr;
+	}
+
+	var a=[4,6,7,3,2,5,0];
+	console.log("基数排序前的数组: "+a);
+	console.log("基数排序后的数组: "+radixSort(a,1));
+</script>
+</html>

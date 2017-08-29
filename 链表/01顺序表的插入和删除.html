@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ <head>
+ <meta charset="utf-8">
+ <title></title>
+ </head>
+ <!-- <body onload="ListInsert([1,2,3,4],2,5)"> -->
+ <!-- <body onload="ListDelete([1,2,3,4],2)"> -->
+ <body onload="LocateElem([1,2,3,5],5)">
+ </body>
+ <script type="text/javascript">
+
+ //插入操作
+  function ListInsert(a,i,e){
+  	if(i<1||i>a.length){
+  		return console.log(false);
+  	}
+  	for(var j=a.length;j>=i;j--){
+  		a[j]=a[j-1];	
+  	}
+  	a[i-1]=e;
+  	return console.log(a);
+  }
+
+
+
+  //删除操作
+  function ListDelete(a,i){
+  	if(i<1||i>a.length){
+  		return console.log(false);
+  	}
+  	for(var j=i;j<=a.length-1;j++){
+  		a[j-1]=a[j];	
+  	}
+  	a.pop();
+  	return console.log(a);
+  }
+
+
+  //按值查找操作(顺序查找)
+  function LocateElem(a,e){
+  	a.map(function(v,i){
+  		if(v==e)
+  		console.log(i);		
+  	}) 	
+  }
+  
+ </script>
+
+</html>

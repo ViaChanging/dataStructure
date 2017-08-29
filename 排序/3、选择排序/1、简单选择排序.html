@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>简单选择排序</title>
+</head>
+<body>
+</body>
+<script>
+
+//有bug
+
+//空间复杂度：仅仅需常数个辅助单元，所以空间复杂度为O(1)；
+//时间复杂度：
+//			①最好情况：表中元素已经有序，比较次数为n*(n-1)/2，移动次数为0
+//			②最坏情况：表中元素都是逆序，比较次数为n*(n-1)/2，移动次数不超过3(n-1)，时间复杂度很大
+//	平均时间复杂度：O(n²)
+//	
+//不稳定 {2,2,1}
+	function selectSort(arr){
+		console.log("简单选择排序前的数组: "+arr);
+		for(var i=0;i<arr.length-1;i++){
+			var min = i;     //假定最小位置是i，把min这个指针出列
+			for(var j=i+1;j<arr.length;j++){
+				if(arr[j]<arr[min]) min=j;  //只要哪个比min指向的数字小，min就指向谁，以此遍历到最后，min指向i到n中最小的那个
+				}        
+				if(min!=i){  //开始交换A[i]与A[min]的数值
+					var temp=arr[min];
+					arr[min]=arr[i];
+					arr[i]=temp;
+			}
+		}
+		return arr;
+	};
+
+     var a=[4,6,1,3,2,9,0];
+	// var a=[4,6,7,3,2,5,0];
+	console.log("简单选择排序后的数组: "+selectSort(a));
+</script>
+</html>
