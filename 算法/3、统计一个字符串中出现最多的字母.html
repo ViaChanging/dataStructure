@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>统计一个字符串中出现最多的字母</title>
+</head>
+<body>
+</body>
+<script>
+function findMax(str){
+	var o={};
+	for(var i=0;i<str.length;i++){
+		var char=str.charAt(i);
+		if(o[char]){
+			o[char]++;//若对象中已经存在，就+1
+		}
+		else{
+			o[char]=1;//第一次出现，次数记为1
+		}
+	}
+
+	console.log(o);//输出完整的对象，记录每个字符及其出现的次数
+
+	var max=0;
+	for(var key in o){//遍历字符出现的最大次数
+		if(o[key]>max){
+			max=o[key];	//max记录字符出现的最大次数	
+		}
+	}
+
+	for(var key in o){//再次循环，因为字符出现最多的可能不只一个字符，只要字符对应的次数=max，就输出
+		if(o[key]==max){
+			console.log(key+":"+max);
+		}
+	}
+	
+
+}
+
+var a='nininihaoa';
+findMax(a);
+	
+</script>
+</html>

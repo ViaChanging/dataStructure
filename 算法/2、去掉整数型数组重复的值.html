@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>数组去重</title>
+</head>
+<body>
+</body>
+<script>
+function unique(arr){
+	var arr1=[];   //定义一个临时数组  
+	for(var i=0;i<arr.length;i++){  //循环遍历待去重数组  
+		if(arr1.indexOf(arr[i])==-1){//若待去重数组下标为i的元素不在临时数组中，则添加到临时数组中
+			arr1.push(arr[i]);
+		}
+	}
+	return arr1;
+}
+
+var a=[1,13,1,24,11,11,14,12];
+console.log(unique(a));
+	
+</script>
+</html>

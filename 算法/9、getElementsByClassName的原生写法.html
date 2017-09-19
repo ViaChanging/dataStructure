@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>getElementsByclassName的兼容写法</title>
+</head>
+<body>
+<body>
+ <div id="div">
+ 	<div class="demo"></div>
+ 	<div></div>
+ 	<div class="test demo "></div>
+ 	<div></div>
+ 	<div></div>
+ 	<div class="demo"></div>
+ 	<div></div>
+ 	<div></div>
+ 	<div class="demo java"></div>  
+</div>
+
+</body>
+</html>
+</body>
+<script>
+function getElementsByclassName(node,className){
+	var doms=document.getElementById(node).getElementsByTagName("*");
+
+	var arr=[];
+
+	for(var i=0;i<doms.length;i++){
+		var arr1=doms[i].className.split(" ");
+		for(var j=0;j<arr1.length;j++){
+			if(arr1[j]==className){
+				arr.push(doms[i]);
+			}
+		}
+	}
+
+	return arr;
+}
+
+console.log(getElementsByclassName("div","java"));
+
+	
+</script>
+</html>

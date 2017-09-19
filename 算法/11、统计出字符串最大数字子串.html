@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试案例</title>
+</head>
+<body>
+</body>
+</html>
+<!-- script 如果type 不写 或者写成 text/javascript 都会当js解析 
+    如果写成其他 那么 首页页面中 看不到 ,然后 不会被解析
+          定义模板 -->
+
+
+
+
+<script type="text/javascript">
+    // 准备替换的内容
+    // var str ='<ul><li>我的名字是{{name}}</li><li>我的爱好是{{habbit}}</li></ul>';
+
+    // 通过标签获取标签
+   
+    // 准备对象
+   
+
+    // 进行替换
+   
+
+    // 添加到界面上
+    
+</script>
+<script>
+    function maxNumL(str){
+        var reg = /[^\d]/g;//检测出非数字的字符
+        var reg2=/\s{1,}/g;//检测出至少一个以上的空格块
+        var reg3=/^\s/;//检测空格开头
+        str=str.replace(reg,' ');
+        console.log(str);
+        str=str.replace(reg2,' ');
+        console.log(str);
+        str=str.replace(reg3,'');
+
+        var arr=str.split(' ');
+        console.log(arr);
+
+        
+        
+        var max;
+        for(var i=1;i<arr.length;i++){
+            max=arr[0].length;
+            if(arr[i].length>=max){
+                max=arr[i].length; 
+            }
+        }
+         console.log("最大长度为:"+max);
+        for(var i=0;i<arr.length;i++){
+            if(arr[i].length==max){
+                console.log("\n为:"+arr[i]);
+            }
+        }             
+    }
+    maxNumL('abcd345678ed125ss123456');
+</script>
