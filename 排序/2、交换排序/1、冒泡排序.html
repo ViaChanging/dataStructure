@@ -14,26 +14,56 @@
 //	平均时间复杂度：O(n²)
 //	
 //稳定
+
+
+//冒泡可以不设置标志位，不设置的话可能后面几个数已经是排序的了，就不需要进行冒泡了。不设标志位的话，就还需要冒泡，有点浪费时间
+	/*function bubbleSort(arr){
+		console.log("冒泡前的数组: "+arr);
+
+		for(var i=0;i<arr.length-1;i++){
+
+				for(var j=arr.length-1;j>i;j--){
+					if(arr[j]<=arr[j-1]){
+						var temp=arr[j-1];
+						arr[j-1]=arr[j];
+						arr[j]=temp;
+					}
+				}
+
+		}
+
+
+		return arr;
+	};*/
+
+
+	//设置标志位，当冒泡到i趟后，后面n-i+1个数已经是有序，通过标志位，就不需要判断了
 	function bubbleSort(arr){
 		console.log("冒泡前的数组: "+arr);
-		for(var i=0;i<arr.length;i++){
-			var flag=false;//标记本趟冒泡是否产生交换
 
-			for(var j=arr.length-1;j>i;j--){ //一趟冒泡
-				if(arr[j]<arr[j-1]){ //若为逆序，则交换
-					var temp=arr[j];
-					arr[j]=arr[j-1];
-				    arr[j-1]=temp;
-				    flag=true;
+		var  flag;
+		for(var i=0;i<arr.length-1;i++){  
+				flag=true;
+
+				for(var j=arr.length-1;j>i;j--){
+					if(arr[j]<=arr[j-1]){
+						var temp=arr[j-1];
+						arr[j-1]=arr[j];
+						arr[j]=temp;
+						flag=false;
+					}
 				}
-			}
 
-			if(flag==false)  //本趟没有产生冒泡，表明已经有序了
-				return arr;
+				if(flag==true){
+					return arr;
+				}
+
 		}
+
 	};
 
-	var a=[4,6,1,3,2,9,0];
+
+	var a=[4,6,1,2,0,9];
 	console.log("冒泡后的数组: "+bubbleSort(a));
 </script>
 </html>

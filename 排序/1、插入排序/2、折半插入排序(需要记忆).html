@@ -11,18 +11,18 @@
 //时间复杂度：
 //	平均时间复杂度：O(n²)
 //	
-//	在数据量少的时候，性能由于 直接插入排序
+//	在数据量少的时候，性能优于 直接插入排序
 //	
 //	平均比较次数 O(nlog₂n)
 	function insertSort(arr){
 		console.log("折半插入排序前的数组: "+arr);
 		for(var i=1;i<arr.length;i++){
-			var sb=arr[i];//待插入的元素出队
+			var sb=arr[i];//待插入排序的元素出队
 
 			var low=0,high=i-1;
 			//////开始查找待插入的位置///////
 			while(low<=high){
-				var mid=Math.ceil((high+low)/2); //注意取整ceil 向上取整
+				var mid=Math.floor((high+low)/2);
 				if(arr[mid]>sb){
 					high=mid-1; //查找左子表
 				}

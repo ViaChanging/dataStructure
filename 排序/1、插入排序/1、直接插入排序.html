@@ -7,6 +7,10 @@
 <body>
 </body>
 <script>
+/*算法介绍：将一个未排序的数组，依次拿出一个元素进行插入排序。例如数组[4,6,1,3,2,9,0];
+首先取出4，再次取出6，因为6>4,所以位置不动；[4,6]
+再拿出1，因为6>1,此时6“出队”，位置记录temp=2;sb=6;再将6之前的元素不断和sb进行比较，如果之前的某个元素>sb，该元素就后移，直到找出最佳空缺插入的位置，将位置中填补上sb.
+然后依次类推。*/
 //空间复杂度：仅仅需要一个哨兵和临时记录空缺位置的单元，为常数个辅助单元，所以空间复杂度为O(1)；
 //时间复杂度：
 //			①最好情况：表中元素已经有序，待插入的只需要比较一次而不需要移动，所以时间复杂度为O(n);
@@ -15,19 +19,20 @@
 //	
 //	最坏的比较次数：n*(n-1)/2
 //	最好的比较次数：n-1
+
 	function insertSort(arr){
-		console.log("直接插入排序前的数组: "+arr);
-		for(var i=1;i<arr.length;i++){
-			if(arr[i]<arr[i-1]){
-				var temp=i;//空缺的位置
-				var sb=arr[i];//出列的元素
-				for(var j=i-1;j>=0&&arr[j]>sb;j--){
-					arr[j+1]=arr[j];
-					temp=j;
-				}
-				arr[temp]=sb;
+	console.log("直接插入排序前的数组: "+arr);
+	for(var i=1;i<arr.length;i++){
+		if(arr[i]<arr[i-1]){
+			var temp=i;//空缺的位置
+			var sb=arr[i];//出列的元素
+			for(var j=i-1;j>=0&&arr[j]>sb;j--){
+				arr[j+1]=arr[j];
+				temp=j;
 			}
+			arr[temp]=sb;
 		}
+	}
 		return arr;
 	};
 
