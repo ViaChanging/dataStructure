@@ -16,7 +16,8 @@
 //在理想划分，快排做到最平衡划分，就是pivo取中间值，此时时间复杂度为O(nlog₂n)
 //
 //不稳定 {2,2,1}
-	function quickSort(arr){		
+	function quickSort(arr){
+
 		if(arr.length<=1){
 			return arr;
 		}
@@ -35,8 +36,9 @@
 				right.push(arr[i]);
 			}
 		}
-	  return quickSort(left).concat([pivo],quickSort(right));	
-	};
+	  return quickSort(left).concat(pivo,quickSort(right));	
+	}
+
      var a=[4,6,1,3,2,9,0];
 	// var a=[4,6,7,3,2,5,0];
 	console.log("快速排序前的数组: "+a);

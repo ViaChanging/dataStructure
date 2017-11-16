@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>简单选择排序</title>
+	<p>
+1. 堆（二叉堆）是一个数组，可以看成一个近似的完全二叉树，树中每一个结点对应数组中的一个元素。二叉堆有两种形式：最大堆和最小堆。在最大堆中，除了根结点之外的所有结点的值小于等于其父节点的值，因此，堆中最大的元素存放在根结点中，并且在任一子树中，该子树所包含的所有结点的值都不大于该子树根结点的值。最小堆的组织方式正好相反。因此，每次只是保证根结点处是当前剩余节点的最大（或最小）的。 
+
+2. 堆排序的过程如下： 
+①利用 BUILD-MAX-HEAP 将输入数组 A[1..n]建成一个最大堆，其中 n = A.length ； 
+②将数组最大元素所在的 A[1]位置的值与 A[n]位置的值进行交换，然后从堆中去掉结点 n ； 
+③在新的根结点 1 可能会违背最大堆的性质，因此需要利用 MAX-HEAPIFY 进行调整； 
+④不断重复 2,3 步，直到堆中只剩下一个元素，此时排序完成。 
+
+3. 因为使用了堆这个数据结构，所以就叫堆排序。
+	</p>
+</head>
+<body>
+</body>
+<script>
+	/* 排序思路：（降序）
+ * 将堆根保存于尾部，并对剩余序列调用调整函数，调整完成后，再将最大跟保存于尾部-1（-1，-2，...，-i），
+ * 再对剩余序列进行调整，反复进行该过程，直至排序完成。
+ */
+
+/* 将最大的元素调整到堆顶*/
+function AdjustHeap(arr, pos, len){
+    var swap = arr[pos];      //保存当前节点
+    var child = pos * 2 + 1;  //定位到当前节点的左边的子节点
+    while(child < len){       //递归遍历所有的子节点
+        //判断当前节点是否有右节点，若右节点较大，就采用右节点和当前节点进行比较
+        if(child + 1 < len && arr[child] < arr[child + 1]){
+            child += 1;
+        }
+        //比较当前节点和最大的子节点，小于就交换，交换后将当前节点定位到子节点上
+        if(arr[pos] < arr[child]){
+            arr[pos] = arr[child];
+            pos = child;
+            child = pos * 2 + 1;
+        }
+        else{
+            break;
+        }
+        arr[pos] = swap;
+    }
+}
+
+/* 构建堆：
+ * 满足：树中任一非叶子结点的关键字均不大于（或不小于）其左右孩子结点的关键字。
+ * 实现：从最后一个拥有子节点的节点开始，将该节点和其他节点进行比较，将最大的数交换给该节点，
+ *      交换后再依次向前节点进行相同的交换处理，直到构建出大顶堆。
+ */
+function BuildHeap(arr){
+  for(var i=arr.length/2; i>=0; i--){  //构建打顶堆
+      AdjustHeap(arr, i, arr.length);
+  }
+}
+
+/*堆排序算法*/
+function HeapSort(arr){
+    BuildHeap(arr); //构建堆
+    for(var i=arr.length-1; i>0; i--){   //从数组的尾部进行调整
+        var swap = arr[i];  //堆顶永远是最大的元素,将堆顶和尾部元素交换，最大元素就保存在尾部，并且不参与后面的调整
+        arr[i] = arr[0];
+        arr[0] = swap;
+        AdjustHeap(arr, 0, i); //将最大的元素进行调整，将最大的元素调整到堆顶
+    }
+}
+
+var arr = [46,12,33,72,68,19,80,33];
+console.log('before: ' + arr);
+HeapSort(arr);
+console.log(' after: ' + arr);
+</script>
+</html>

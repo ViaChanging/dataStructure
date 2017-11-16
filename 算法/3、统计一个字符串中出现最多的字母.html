@@ -8,9 +8,9 @@
 </body>
 <script>
 function findMax(str){
-	var o={};
+	var o={};//伪数组对象 {a:1,b:2}类似这样
 	for(var i=0;i<str.length;i++){
-		var char=str.charAt(i);
+		var char=str.charAt(i);//也可以写成var char=str[i];
 		if(o[char]){
 			o[char]++;//若对象中已经存在，就+1
 		}
@@ -20,6 +20,7 @@ function findMax(str){
 	}
 
 	console.log(o);//输出完整的对象，记录每个字符及其出现的次数
+	//{n: 3, i: 3, h: 1, a: 2, o: 1}
 
 	var max=0;
 	for(var key in o){//遍历字符出现的最大次数

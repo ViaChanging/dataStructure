@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>字符串去重2</title>
+</head>
+<body>
+</body>
+<script>
+
+function quChong(str){
+	var newstr="";
+	for(var i=0;i<str.length;i++){
+		if(newstr.search(str[i])==-1){//字符串也可以用数组的str[i]访问第i个字符串元素
+			newstr+=str[i];
+		}
+	}
+	return newstr;
+}
+
+var a='nininihaoa';
+console.log(quChong(a));
+	
+</script>
+</html>
